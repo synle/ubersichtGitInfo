@@ -10,12 +10,12 @@ NODE_BINARY_PATH = "/usr/local/bin/node"
 folderArgToSend = FOLDER_TO_TRACKS.join ' '
 
 folderToTrack: FOLDER_TO_TRACKS
-command: "/usr/local/bin/node ~/Library/Application\\ Support/Übersicht/widgets/git-info/gitbranch #{folderArgToSend}"
+command: "#{NODE_BINARY_PATH} ~/Library/Application\\ Support/Übersicht/widgets/git-info/gitbranch #{folderArgToSend}"
 
 refreshFrequency: 2000
 
 style: """
-  top 400px
+  bottom 310px
   left 15px
 
 

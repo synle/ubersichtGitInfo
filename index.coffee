@@ -1,16 +1,15 @@
 FOLDER_TO_TRACKS = [
-  '~/projects/riq',
-  '~/projects/uiq',
-  '~/projects/chrome-packages',
+  '~/git/github-improved',
+  '~/git/ubuntu-setup',
 ]
 
 # where is your node binary path
-NODE_BINARY_PATH = "/usr/local/bin/node"
+NODE_BINARY_PATH = '~/.nvm/versions/node/v6.3.0/bin/node' #"/usr/local/bin/node"
 
 folderArgToSend = FOLDER_TO_TRACKS.join ' '
 
 folderToTrack: FOLDER_TO_TRACKS
-command: "#{NODE_BINARY_PATH} ~/Library/Application\\ Support/Übersicht/widgets/git-info/gitbranch #{folderArgToSend}"
+command: "#{NODE_BINARY_PATH} ./ubersichtGitInfo/gitbranch #{folderArgToSend}"
 
 refreshFrequency: 2000
 
@@ -62,7 +61,7 @@ update: (output, domEl) ->
     folderName = splits[0]
     folderName = folderName.substr( folderName.lastIndexOf( '/' ) + 1).trim()
     folderBranch = splits[1].trim()
-
+    
     bodyDomEl.append("""
       <div class="row">
         <span class='folder'>#{folderName}</span>

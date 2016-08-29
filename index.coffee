@@ -9,7 +9,7 @@ NODE_BINARY_PATH = '~/.nvm/versions/node/v6.3.0/bin/node' #"/usr/local/bin/node"
 folderArgToSend = FOLDER_TO_TRACKS.join ' '
 
 folderToTrack: FOLDER_TO_TRACKS
-command: "#{NODE_BINARY_PATH} ./ubersichtGitInfo/gitbranch #{folderArgToSend}"
+command: "cd ~/git/github-improved; git branch > /tmp/11"
 
 refreshFrequency: 2000
 
@@ -61,7 +61,7 @@ update: (output, domEl) ->
     folderName = splits[0]
     folderName = folderName.substr( folderName.lastIndexOf( '/' ) + 1).trim()
     folderBranch = splits[1].trim()
-    
+
     bodyDomEl.append("""
       <div class="row">
         <span class='folder'>#{folderName}</span>

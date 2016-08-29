@@ -4,13 +4,17 @@ FOLDER_TO_TRACKS = [
 ]
 
 # where is your node binary path
-NODE_BINARY_PATH = '~/.nvm/versions/node/v6.3.0/bin/node' #"/usr/local/bin/node"
+TEMP_PATH_FILE = '/tmp/11';
+cmdToSend = [];
 
-folderArgToSend = FOLDER_TO_TRACKS.join ' '
+for folder, i in FOLDER_TO_TRACKS
+  cmdToSend.push( """cd #{folder}; echo ${PWD} >> #{TEMP_PATH_FILE}; git branch | grep '*' >> #{TEMP_PATH_FILE}""");
+console.log('cmdToSend', cmdToSend)
+cmdToSend = cmdToSend.join(';')
 
 folderToTrack: FOLDER_TO_TRACKS
-command: "cd ~/git/github-improved; git branch > /tmp/11"
-
+command: "echo '' > #{TEMP_PATH_FILE}; #{cmdToSend}; sed -e 's/* //g' #{TEMP_PATH_FILE}"
+ #
 refreshFrequency: 2000
 
 style: """
@@ -53,14 +57,25 @@ render: -> """
 """
 
 update: (output, domEl) ->
-  branches = output.trim().split('\n').sort()
+  tokens = output.trim().split('\n')
+  branches = [];
+  dirs = [];
+
+
+  # find the branch dir
+  for token, i in tokens
+    if i % 2 is 1
+      branches.push token
+    else
+      dirs.push token
+
+
 
   bodyDomEl = $(domEl).find(".body").empty()
   for branch, i in branches
-    splits = branch.split '|||'
-    folderName = splits[0]
+    folderName = dirs[i]
     folderName = folderName.substr( folderName.lastIndexOf( '/' ) + 1).trim()
-    folderBranch = splits[1].trim()
+    folderBranch = branch.trim()
 
     bodyDomEl.append("""
       <div class="row">

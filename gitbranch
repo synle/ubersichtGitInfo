@@ -1,9 +1,0 @@
-var exec = require('child_process').exec;
-var args = process.argv.slice(2);
-
-args.map( function(folder){
-    var gitBranchCmd = "cd " + folder + "; git branch | sed -n -e 's/^\\* \\(.*\\)/\\1/p'";
-    exec(gitBranchCmd, function(err, content) {
-        console.log(folder + '|||' + content.trim());
-    })
-});

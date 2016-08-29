@@ -15,7 +15,7 @@ cmdToSend = cmdToSend.join(';')
 folderToTrack: FOLDER_TO_TRACKS
 command: "echo '' > #{TEMP_PATH_FILE}; #{cmdToSend}; sed -e 's/* //g' #{TEMP_PATH_FILE}"
  #
-refreshFrequency: 2000
+refreshFrequency: 12000
 
 style: """
   bottom 310px

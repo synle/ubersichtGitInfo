@@ -57,10 +57,14 @@ render: -> """
 """
 
 update: (output, domEl) ->
+  # prep the dom
+  bodyDomEl = $(domEl).find(".body").empty()
+
+
+  # find the tokens
   tokens = output.trim().split('\n')
   branches = [];
   dirs = [];
-
 
   # find the branch dir
   for token, i in tokens
@@ -70,8 +74,7 @@ update: (output, domEl) ->
       dirs.push token
 
 
-
-  bodyDomEl = $(domEl).find(".body").empty()
+  # real dom update
   for branch, i in branches
     folderName = dirs[i]
     folderName = folderName.substr( folderName.lastIndexOf( '/' ) + 1).trim()

@@ -17,8 +17,7 @@ cmdToSend = cmdToSend.join(';')
 
 
 
-# return and defs
-folderToTrack: FOLDER_TO_TRACKS
+# return and defs2
 command: "echo '' > #{TEMP_PATH_FILE}; #{cmdToSend}; sed -e 's/* //g' #{TEMP_PATH_FILE}"
 refreshFrequency: 12000
 

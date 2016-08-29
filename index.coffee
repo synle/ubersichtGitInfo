@@ -4,7 +4,7 @@ FOLDER_TO_TRACKS = [
 ]
 
 # where is your node binary path
-TEMP_PATH_FILE = '/tmp/11';
+TEMP_PATH_FILE = '/tmp/ubersitch-git-info';
 cmdToSend = [];
 
 for folder, i in FOLDER_TO_TRACKS

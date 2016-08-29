@@ -9,7 +9,7 @@ cmdToSend = [];
 
 for folder, i in FOLDER_TO_TRACKS
   cmdToSend.push( """cd #{folder}; echo ${PWD} >> #{TEMP_PATH_FILE}; git branch | grep '*' >> #{TEMP_PATH_FILE}""");
-console.log('cmdToSend', cmdToSend)
+
 cmdToSend = cmdToSend.join(';')
 
 folderToTrack: FOLDER_TO_TRACKS

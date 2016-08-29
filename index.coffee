@@ -3,18 +3,23 @@ FOLDER_TO_TRACKS = [
   '~/git/ubuntu-setup',
 ]
 
-# where is your node binary path
-TEMP_PATH_FILE = '/tmp/ubersitch-git-info';
-cmdToSend = [];
 
+# where do we store the temp file that holds the previou state
+TEMP_PATH_FILE = '/tmp/ubersitch-git-info';
+
+
+# shell command to send
+cmdToSend = [];
 for folder, i in FOLDER_TO_TRACKS
   cmdToSend.push( """cd #{folder}; echo ${PWD} >> #{TEMP_PATH_FILE}; git branch | grep '*' >> #{TEMP_PATH_FILE}""");
-
 cmdToSend = cmdToSend.join(';')
 
+
+
+
+# return and defs
 folderToTrack: FOLDER_TO_TRACKS
 command: "echo '' > #{TEMP_PATH_FILE}; #{cmdToSend}; sed -e 's/* //g' #{TEMP_PATH_FILE}"
- #
 refreshFrequency: 12000
 
 style: """

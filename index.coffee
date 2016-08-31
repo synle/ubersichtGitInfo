@@ -1,6 +1,5 @@
 FOLDER_TO_TRACKS = [
-  '~/git/github-improved',
-  '~/git/ubuntu-setup',
+  # '~/git/ubuntu-setup'
 ]
 
 

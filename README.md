@@ -23,4 +23,4 @@ FOLDER_TO_TRACKS = [
 
 Screenshot:
 ===========
-![Screenshot](1.png)
+![Screenshot](screenshot.png)
